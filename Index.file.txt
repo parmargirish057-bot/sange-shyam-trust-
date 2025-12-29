@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UDAAN – This is not a charity. This is a revolution.</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: radial-gradient(circle at top, #1a1f4a 0%, #050716 70%);
+    --gold: #D4AF37;
+    --ivory: #F8F1E9;
+    --soft: rgba(255,255,255,0.08);
+    --glow: 0 0 40px rgba(212,175,55,0.6);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg);
+    color: var(--ivory);
+    overflow-x: hidden;
+    cursor: none;
+}
+
+/* LOGO */
+#logo {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: var(--glow);
+    z-index: 10;
+}
+
+@media(max-width:768px){
+    #logo {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* CURSOR */
+.cursor {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, var(--gold), transparent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+}
+
+/* PARTICLES */
+#particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: float 25s linear infinite;
+}
+@keyframes float {
+    from { transform: translateY(110vh); opacity:0; }
+    to { transform: translateY(-120px); opacity:0; }
+}
+
+/* HERO */
+#hero {
+    min-height: 100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(4rem, 13vw, 9rem);
+    font-weight: 900;
+    text-shadow: var(--glow);
+}
+
+.hero-sub {
+    max-width: 820px;
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+}
+
+.tagline {
+    margin-top: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--gold);
+}
+
+/* BUTTON */
+.cta {
+    margin-top: 3.5rem;
+    padding: 1rem 3rem;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--gold);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* SECTION */
+section {
+    padding: 8rem 10vw;
+    position: relative;
+    z-index: 2;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.section-text {
+    max-width: 900px;
+    font-size: 1.15rem;
+}
+
+/* CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+    gap: 2.5rem;
+    margin-top: 4rem;
+}
+.card {
+    padding: 2.5rem;
+    background: var(--soft);
+    border: 1px solid rgba(212,175,55,0.3);
+}
+
+/* FOOTER */
+footer {
+    padding: 4rem 2rem;
+    text-align: center;
+    opacity: 0.8;
+}
+</style>
+</head>
+
+<body>
+
+<img src="logo.jpg" alt="Sange Education & Charitable Trust" id="logo">
+
+<div class="cursor"></div>
+<div id="particles"></div>
+
+<div id="hero">
+    <h1 class="hero-title">UDAAN</h1>
+    <p class="hero-sub">
+        This is not about donations.
+        This is about <strong>dignity</strong>, <strong>power</strong>, and <strong>breaking the cycle forever</strong>.
+    </p>
+    <div class="tagline">THIS IS NOT A CHARITY · THIS IS A REVOLUTION</div>
+    <button class="cta">JOIN THE MOVEMENT</button>
+</div>
+
+<section>
+    <h2 class="section-title">Why UDAAN Exists</h2>
+    <p class="section-text">
+        Charity feeds hunger for a day.
+        UDAAN destroys the system that creates hunger.
+        We equip people to rise.
+    </p>
+</section>
+
+<section>
+    <h2 class="section-title">Our Manifesto</h2>
+    <div class="cards">
+        <div class="card"><h3>Education as Power</h3><p>Knowledge is a right.</p></div>
+        <div class="card"><h3>Skill Before Sympathy</h3><p>We build capability.</p></div>
+        <div class="card"><h3>Dignity First</h3><p>Strength over pity.</p></div>
+    </div>
+</section>
+
+<footer>
+    © 2025 UDAAN Trust<br>
+    Built to rise.
+</footer>
+
+<script>
+const cursor = document.querySelector('.cursor');
+document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+});
+
+const container = document.getElementById('particles');
+for(let i=0;i<60;i++){
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random()*100 + '%';
+    container.appendChild(p);
+}
+</script>
+
+</body>
+</html>
